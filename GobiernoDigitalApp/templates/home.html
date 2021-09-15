@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 {% block content%}
 
   <!--**********************************
@@ -89,16 +90,13 @@
                             <div class="card-body">
                               <h2>Distritos</h2>
                             <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">__________
+                                <button class="mr-5 btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">__________
                                 <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                                    <li><a href="#">HTML</a></li>
-                                    <li><a href="#">CSS</a></li>
-                                    <li><a href="#">JavaScript</a></li>
-                                    <li><a href="#">jQuery</a></li>
-                                    <li><a href="#">Bootstrap</a></li>
-                                    <li><a href="#">Angular</a></li>
+                                    <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+                                    {% for distrito in distritos %}
+                                    <li><a href="#">{{distrito.nombre}}</a></li>
+                                    {% endfor %}
                                 </ul>
                                 <button type="button" class="btn btn-primary">Buscar</button>
                             </div>
@@ -174,7 +172,24 @@ $(document).ready(function(){
                     </div>
                     <!-- /# column -->
                 </div>
-
+                <div class="card-deck row row-cols-3">
+                {% for proyecto in proyectos %}      
+                    <div class="col-4 mb-4">
+                        <div class="card">
+                      <img src="{{proyecto.imagen.url}}" class="card-img-top mx-auto" style="max-height: 40vh;max-width: 30vw;object-fit: cover;" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{proyecto.title}}</h5>
+                        {% if proyecto.descripcion %}
+                        <p class="card-text">{{proyecto.descripcion}}</p>
+                        {% endif %}
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">{{proyecto.timestamp | naturaltime }}</small>
+                      </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
             </div>
         </div>
 
