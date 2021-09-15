@@ -105,7 +105,9 @@
                     </div>
                 </div>
 
-    <script>
+                
+{% block script %}
+<script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -115,6 +117,22 @@ $(document).ready(function(){
   });
 });
 </script>
+
+<script>
+ $(function(){
+
+    $(".dropdown-menu li a").click(function(){
+
+      $(".btn:first-child").text($(this).text());
+      $(".btn:first-child").val($(this).text());
+
+   });
+
+});
+</script>
+
+{% endblock  %}
+
 
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
