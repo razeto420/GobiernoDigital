@@ -32,6 +32,12 @@
                                                 {% if proyecto.descripcion %}
                                                 <p class="card-text">{{proyecto.descripcion}}</p>
                                                 {% endif %}
+                                                {% if proyecto.presupuesto %}
+                                                <label>Presupuesto asignado</label><p class="card-text">{{proyecto.presupuesto}}</p>
+                                                {% endif %}
+                                                 {% if proyecto.monto_cancelado %}
+                                                <label>Monto cancelado</label><p class="card-text">{{proyecto.monto_cancelado}}</p>
+                                                {% endif %}
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">{{proyecto.timestamp | naturaltime }}</small>

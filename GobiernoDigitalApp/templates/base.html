@@ -175,34 +175,18 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Menú</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="fa fa-home"></i><span class="nav-text">Dashboard</span></a>
+                                class="fa fa-home"></i><span class="nav-text">Menú</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                            <li><a href="./index2.html">Dashboard 2</a></li>
+                            <li><a href="{% url 'Home' %}">Inicio</a></li>
+                            <li><a href="{% url 'registro' %}">Registrarse</a></li>
+                            <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                            <li><a href="{% url 'login' %}">Publicar proyecto</a></li>
                         </ul>
                     </li>
-                     
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Inicio</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                            <li><a href="./index2.html">Dashboard 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-label">Proyecto</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="fa fa-building"></i><span class="nav-text">Agrega un proyecto</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./page-register.html">Registrarse</a></li>
-                            <li><a href="./page-login.html">Iniciar sesión</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
-
-
         </div>
         <!--**********************************
             Sidebar end
