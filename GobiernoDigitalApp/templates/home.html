@@ -9,71 +9,123 @@
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
-
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body">
-                            <h3>Desarrollo de proyectos</h3>
-                                <div class="current-progress">
-                                    <div class="progress-content py-2">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Website</div>
+                    <div class="col-12 col-md-8">
+                        <p class="h2 mb-5">Últimos proyectos agregados</p>
+                        <div class="card-deck row row-cols-1 row-cols-md-2">
+                            {% for proyecto in proyectos %}      
+                                <div class="col mb-4">
+                                    <a href="">
+                                        <div class="card">
+                                            <img src="{{proyecto.imagen.url}}" class="card-img-top mx-auto" style="object-fit: cover; max-height: 35vh;" alt="...">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-8"><h4 class="card-title">{{proyecto.title}}</h4></div>
+                                                    {% if proyecto.estado == 'SI' %}
+                                                    <div class="col-5 col-md-4" ><p class="badge badge-pill badge-success">Sin iniciar</p></div>
+                                                    {% elif proyecto.estado == 'EP' %}
+                                                    <div class="col-5 col-md-4" ><p class="badge badge-pill badge-warning">En proceso</p></div>
+                                                    {% else %}
+                                                    <div class="col-5 col-md-4" ><p class="badge badge-pill badge-danger">Finalizado</p></div>
+                                                    {% endif %}
+                                                </div>
+                                                {% if proyecto.descripcion %}
+                                                <p class="card-text">{{proyecto.descripcion}}</p>
+                                                {% endif %}
                                             </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                                            40%
+                                            <div class="card-footer">
+                                                <small class="text-muted">{{proyecto.timestamp | naturaltime }}</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                   
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="Distritos">
+                            <div class="card">
+                                <div class="card-body">
+                                  <h2>Distritos</h2>
+                                <div class="dropdown">
+                                    <button class="mr-5 btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">__________
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
+                                        {% for distrito in distritos %}
+                                        <li><a href="#">{{distrito.nombre}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <button type="button" class="btn btn-primary">Buscar</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="Desarrollo">
+                            <div class="card">
+                                <div class="card-body">
+                                <h3>Desarrollo de proyectos</h3>
+                                    <div class="current-progress">
+                                        <div class="progress-content py-2">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="progress-text">Huancayo</div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="current-progressbar">
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-primary w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                                40%
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="progress-content py-2">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Android</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                                            60%
+                                        <div class="progress-content py-2">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="progress-text">El Tambo</div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="current-progressbar">
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-primary w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                                60%
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="progress-content py-2">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Ios</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                            70%
+                                        <div class="progress-content py-2">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="progress-text">Chilca</div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="current-progressbar">
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                                                70%
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="progress-content py-2">
-                                        <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="progress-text">Mobile</div>
-                                            </div>
-                                            <div class="col-lg-8">
-                                                <div class="current-progressbar">
-                                                    <div class="progress">
-                                                        <div class="progress-bar progress-bar-primary w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                            90%
+                                        <div class="progress-content py-2">
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="progress-text">Hualhuas</div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="current-progressbar">
+                                                        <div class="progress">
+                                                            <div class="progress-bar progress-bar-primary w-80" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                                                80%
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -83,26 +135,54 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-6">
+                        <p class="h3 mb-2 text-center">Presupuestos</p>
                         <div class="card">
-                            <div class="card-body">
-                              <h2>Distritos</h2>
-                            <div class="dropdown">
-                                <button class="mr-5 btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">__________
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
-                                    {% for distrito in distritos %}
-                                    <li><a href="#">{{distrito.nombre}}</a></li>
-                                    {% endfor %}
-                                </ul>
-                                <button type="button" class="btn btn-primary">Buscar</button>
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="stat-text">Huancayo</div>
+                                    <div class="stat-digit"> <i class="fa fa-usd"></i>8500/10000</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>   
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="stat-text">El tambo</div>
+                                    <div class="stat-digit"> <i class="fa fa-usd"></i>7800 / 8000</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="stat-text">Chilca</div>
+                                    <div class="stat-digit"> <i class="fa fa-usd"></i> 500 / 1000</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="stat-widget-two card-body">
+                                <div class="stat-content">
+                                    <div class="stat-text">Hualhuas</div>
+                                    <div class="stat-digit"> <i class="fa fa-usd"></i>650 / 800</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
+                    
+
                 </div>
 
                 
@@ -134,80 +214,7 @@ $(document).ready(function(){
 {% endblock  %}
 
 
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Today Expenses </div>
-                                    <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Income Detail</div>
-                                    <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Task Completed</div>
-                                    <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card">
-                            <div class="stat-widget-two card-body">
-                                <div class="stat-content">
-                                    <div class="stat-text">Task Completed</div>
-                                    <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /# card -->
-                    </div>
-                    <!-- /# column -->
-                </div>
-                <div class="card-deck row row-cols-3">
-                {% for proyecto in proyectos %}      
-                    <div class="col-4 mb-4">
-                        <div class="card">
-                      <img src="{{proyecto.imagen.url}}" class="card-img-top mx-auto" style="max-height: 40vh;max-width: 30vw;object-fit: cover;" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">{{proyecto.title}}</h5>
-                        {% if proyecto.descripcion %}
-                        <p class="card-text">{{proyecto.descripcion}}</p>
-                        {% endif %}
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted">{{proyecto.timestamp | naturaltime }}</small>
-                      </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+               
             </div>
         </div>
 

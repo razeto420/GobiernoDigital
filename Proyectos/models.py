@@ -18,6 +18,12 @@ class Distrito(models.Model):
 
 
 class Proyecto(models.Model):
+
+    ESTADO_CHOICES = [
+        ('SI','Sin iniciar'),
+        ('EP','En proceso'),
+        ('F','Finalizado'),
+    ]
     title = models.CharField(max_length=50)
     imagen = models.ImageField()
     descripcion = models.TextField(blank=True,null=True)
@@ -33,7 +39,7 @@ class Proyecto(models.Model):
     adenda = models.CharField(blank=True,null=True,max_length=100)
     monto_adenda = models.FloatField(blank=True,null=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='proyectos')
-    
+    estado = models.CharField(choices=ESTADO_CHOICES,default='SI',max_length=10)
     class Meta:
         ordering = ['-timestamp']
 
