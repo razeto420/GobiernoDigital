@@ -1,26 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 {% load humanize %}
-{% block content%}
+
+{% block title %}
+    Inicio
+{% endblock %}
+
+
+
+            {% block content%}
 
   <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
             <!-- row -->
-            <div class="container-fluid">
+           
                 <div class="row">
-                    <div class="col-12 col-md-8">
-                        <p class="h2 mb-5">Últimos proyectos agregados</p>
+                    <div class="col-md-8">
+                        <h1 class="h3 mb-3 text-gray-900">Últimos proyectos agregados</h1>
                         <div class="card-deck row row-cols-1 row-cols-md-2">
                             {% for proyecto in proyectos %}      
                                 <div class="col mb-4">
-                                    <a href="">
+                                    <a href="" style="text-decoration: none;">
                                         <div class="card">
                                             <img src="{{proyecto.imagen.url}}" class="card-img-top mx-auto" style="object-fit: cover; max-height: 35vh;" alt="...">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-12 col-md-8"><h4 class="card-title">{{proyecto.title}}</h4></div>
+                                                    <div class="col-12 col-md-8"><h3 class="card-title text-gray-800">{{proyecto.title}}</h3></div>
                                                     {% if proyecto.estado == 'SI' %}
                                                     <div class="col-5 col-md-4" ><p class="badge badge-pill badge-success">Sin iniciar</p></div>
                                                     {% elif proyecto.estado == 'EP' %}
@@ -29,14 +35,11 @@
                                                     <div class="col-5 col-md-4" ><p class="badge badge-pill badge-danger">Finalizado</p></div>
                                                     {% endif %}
                                                 </div>
-                                                {% if proyecto.descripcion %}
-                                                <p class="card-text">{{proyecto.descripcion}}</p>
-                                                {% endif %}
                                                 {% if proyecto.presupuesto %}
-                                                <h5 class="font-weight-bold">Presupuesto asignado</h5><p class="card-text">{{proyecto.presupuesto}}</p>
+                                                <h4 class="text-gray-800">Presupuesto asignado</h4><p class="card-text text-gray-600">{{proyecto.presupuesto}}</p>
                                                 {% endif %}
-                                                 {% if proyecto.monto_cancelado %}
-                                                <h5 class="font-weight-bold">Monto cancelado</h5><p class="card-text">{{proyecto.monto_cancelado}}</p>
+                                                {% if proyecto.monto_cancelado %}
+                                                <h4 class="text-gray-800">Monto cancelado</h4><p class="card-text text-gray-600">{{proyecto.monto_cancelado}}</p>
                                                 {% endif %}
                                             </div>
                                             <div class="card-footer">
@@ -49,23 +52,27 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-md-4">
                         <div class="Distritos">
                             <div class="card">
                                 <div class="card-body">
-                                  <h2>Distritos</h2>
-                                <div class="dropdown">
-                                    <button class="mr-5 btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">__________
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <input class="form-control" id="myInput" type="text" placeholder="Buscar..">
-                                        {% for distrito in distritos %}
-                                        <li><a href="#">{{distrito.nombre}}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                    <button type="button" class="btn btn-primary">Buscar</button>
+                                  <h4>Buscar proyectos por distrito</h4>
+                                    <div class="dropdown mb-4">
+                                    
+                                        <button id="dropdownMenuButton" class="btn btn-primary btn-distrito dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                            __________
+                                        </button>
+                                        <div class="dropdown-menu animated--fade-in"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <input class="form-control" id="myInput" type="text" placeholder="Buscar.." autocomplete="off">
+                                            {% for distrito in distritos %}
+                                            <a class="dropdown-item distrito" href="#">{{distrito.nombre}}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+     
                                 </div>
-                            </div>
                             </div>
                         </div>
                         <div class="Desarrollo">
@@ -190,14 +197,14 @@
                     
 
                 </div>
-
+                {% endblock %}
                 
 {% block script %}
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $(".dropdown-menu li").filter(function() {
+    $(".distrito").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
@@ -207,10 +214,10 @@ $(document).ready(function(){
 <script>
  $(function(){
 
-    $(".dropdown-menu li a").click(function(){
+    $(".distrito").click(function(){
 
-      $(".btn:first-child").text($(this).text());
-      $(".btn:first-child").val($(this).text());
+      $(".btn-distrito").text($(this).text());
+      $(".btn-distrito").val($(this).text());
 
    });
 
@@ -220,12 +227,7 @@ $(document).ready(function(){
 {% endblock  %}
 
 
-               
-            </div>
-        </div>
 
         <!--**********************************
             Content body end
-        ***********************************-->
-
-{% endblock %}
+        **********************************

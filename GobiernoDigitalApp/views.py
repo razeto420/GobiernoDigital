@@ -1,6 +1,7 @@
 from Proyectos.models import Distrito, Proyecto
 from django.shortcuts import render
 from Proyectos.models import Proyecto,Distrito
+from .models import Profile
 # Create your views here.
 
 def home(request):
