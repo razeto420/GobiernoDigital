@@ -9,3 +9,6 @@ def login(request):
 
 def registro(request):
     return render(request,"registro.html")
+
+def forgotpwd(request):
+    return render(request,"forgot-password.html")
