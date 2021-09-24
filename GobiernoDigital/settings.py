@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'GobiernoDigitalApp',
-    'Proyectos'
+    'Proyectos',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
