@@ -59,17 +59,9 @@
                                 <form method="get">
                                   <h4>Buscar proyectos por distrito</h4>
                                     <div class="dropdown mb-4">
-                                        <button id="dropdownMenuButton" class="btn btn-primary btn-distrito dropdown-toggle" type="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        __________</button>
+                            
                                         {{myFilter.form}}
-                                        <div class="dropdown-menu animated--fade-in"
-                                            aria-labelledby="dropdownMenuButton">
-                                            <input class="form-control" id="myInput" type="text" placeholder="Buscar.." autocomplete="off">
-                                            {% for distrito in distritos %}
-                                            <a class="dropdown-item distrito" href="#">{{distrito.nombre}}</a>
-                                            {% endfor %}
-                                        </div>
+                                      
                                          <button type="submit" class="btn btn-primary">Buscar</button>
                                          </form>
                                     </div>
