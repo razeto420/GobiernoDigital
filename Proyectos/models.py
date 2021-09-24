@@ -14,7 +14,7 @@ class Distrito(models.Model):
     provincia = models.ForeignKey(Provincia,on_delete=models.CASCADE)
     
     def __str__(self):
-        return f'Distrito de '+self.nombre + ', Pronvincia de '+self.provincia.nombre
+        return self.nombre
 
 
 class Proyecto(models.Model):
