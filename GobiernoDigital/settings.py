@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'GobiernoDigitalApp',
     'Proyectos',
     'django_filters',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +127,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+AUTHENTICATION_BACKENDS=(
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
 STATIC_URL = '/static/'
 MEDIA_URL='/media/'
 MEDIA_ROOT= BASE_DIR/'media'
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL= '/'

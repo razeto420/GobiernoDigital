@@ -1,3 +1,5 @@
+{% load socialaccount %}
+{% providers_media_js %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,8 +63,8 @@
                                             Iniciar Sesión
                                         </a>
                                         <hr>
-                                        <a href="{% url 'Proyectos' %}" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Ingresar con cuentas de Google
+                                        <a href="{% provider_login_url 'google' %}" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Ingresar con Google
                                         </a>
                                         <a href="{% url 'Proyectos' %}"class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Ingresar con Facebook
