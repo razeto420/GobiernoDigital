@@ -82,8 +82,8 @@
                                                 <div class="col-lg-8">
                                                     <div class="current-progressbar">
                                                         <div class="progress">
-                                                            <div class="progress-bar progress-bar-primary w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                                                                {{data|safe}}%
+                                                            <div class="progress-bar progress-bar-primary" style="width: {{total|safe}}%" role="progressbar" aria-valuenow="{{total|safe}}" aria-valuemin="0" aria-valuemax="100">
+                                                                {{total|safe}}%
                                                             </div>
                                                         </div>
                                                     </div>
