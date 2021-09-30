@@ -11,12 +11,8 @@ def home(request):
     distritos = Distrito.objects.all()
     myFilter=ProyectFilter(request.GET,queryset=proyectos)
     proyectos=myFilter.qs
-
-
     contador=Proyecto.objects.filter(distrito=1,estado='F').count()
     contadorProyectos=Proyecto.objects.filter(distrito=1).count()
     total=(contador/contadorProyectos)*100
-    
-  
     return render(request,"home.html",{'proyectos':proyectos,'distritos':distritos,'myFilter':myFilter,'total':total})
 

@@ -21,7 +21,7 @@
                         <div class="card-deck row row-cols-1 row-cols-md-2">
                             {% for proyecto in proyectos %}      
                                 <div class="col mb-4">
-                                    <a href="" style="text-decoration: none;">
+                                    <a href="/proyectos_detail/{{ proyecto.id }}" style="text-decoration: none;">
                                         <div class="card">
                                             <img src="{{proyecto.imagen.url}}" class="card-img-top mx-auto" style="object-fit: cover; max-height: 35vh;" alt="...">
                                             <div class="card-body">
@@ -52,6 +52,7 @@
                             {% endfor %}
                         </div>
                     </div>
+
                     <div class="col-md-4">
                         <div class="Distritos">
                             <div class="card">
@@ -59,9 +60,7 @@
                                 <form method="get">
                                   <h4>Buscar proyectos por distrito</h4>
                                     <div class="dropdown mb-4">
-                            
                                         {{myFilter.form}}
-                                      
                                          <button type="submit" class="btn btn-primary">Buscar</button>
                                          </form>
                                     </div>

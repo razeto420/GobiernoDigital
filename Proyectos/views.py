@@ -1,24 +1,13 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from django.shortcuts import render, get_object_or_404
+from .models import Proyecto
 
 # Create your views here.
-def proyectos(request):
-    return render(request,"proyectos.html")
+
+
+def project_detail(request,project_id):
+    project=get_object_or_404(Proyecto,id=project_id)
+    context={'projects':project}
+    return render(request,"proyectos_detail.html",context)
 
 def login(request):
     return render(request,"login.html")
-
-def registro(request):
-    form=UserCreationForm()
-    if request.method=='POST':
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-
-    context={'form':form}
-    return render(request,"registro.html",context)
-
-def forgotpwd(request):
-    return render(request,"forgot-password.html")
