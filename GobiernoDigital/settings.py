@@ -140,3 +140,16 @@ MEDIA_ROOT= BASE_DIR/'media'
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL= '/'
+LOGOUT_REDICRT_URL='/login/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
