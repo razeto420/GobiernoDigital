@@ -133,6 +133,14 @@ AUTHENTICATION_BACKENDS=(
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+STATIC_URL = '/static/'
+MEDIA_URL='/media/'
+MEDIA_ROOT= BASE_DIR/'media'
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL= '/'
+LOGOUT_REDICRT_URL='/login/'
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
@@ -144,10 +152,3 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
-STATIC_URL = '/static/'
-MEDIA_URL='/media/'
-MEDIA_ROOT= BASE_DIR/'media'
-
-SITE_ID = 1
-LOGIN_REDIRECT_URL= '/'
