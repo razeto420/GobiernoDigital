@@ -6,12 +6,28 @@
 <div class="col-md-8">
     <div class="card-deck row row-cols-1 row-cols-md-2">
     <div class="col mb-4">
-    <a href="" style="text-decoration: none;">
     <div class="card">
-    <h1>{{projects.title}}</h1>
     <img src="{{projects.imagen.url}}" class="card-img-top mx-auto" style="object-fit: cover; max-height: 35vh;" alt="...">
-    <div class="col-5 col-md-4" ><p class="badge badge-pill badge-success">{{ projects.estado }}</p></div>
-    <h4 class="text-gray-800">Presupuesto asignado</h4><p class="card-text text-gray-600">S/. {{projects.presupuesto}}</p>
+     <div class="card-body">
+        <div class="row">
+        <div class="col-12 col-md-8"><h3 class="card-title text-gray-800">{{projects.title}}</h3></div>
+        {% if proyecto.estado == 'SI' %}
+            <div class="col-5 col-md-4" ><p class="badge badge-pill badge-success">Sin iniciar</p></div>
+        {% elif proyecto.estado == 'EP' %}
+            <div class="col-5 col-md-4" ><p class="badge badge-pill badge-warning">En proceso</p></div>
+        {% else %}
+            <div class="col-5 col-md-4" ><p class="badge badge-pill badge-danger">Finalizado</p></div>
+        {% endif %}
+        </div>
+        {% if projects.presupuesto %}
+        <h4 class="text-gray-800">Presupuesto asignado</h4><p class="card-text text-gray-600">S/. {{projects.presupuesto}}</p>
+        {% endif %}
+        {% if projects.monto_cancelado %}
+        <h4 class="text-gray-800">Monto cancelado</h4><p class="card-text text-gray-600">S/. {{projects.monto_cancelado}}</p>
+        {% endif %}
+        <h4 class="text-gray-800">Distrito</h4><p class="card-text text-gray-600">{{projects.distrito}}</p>
+        </div>
+    </div>
 </div>
 </div>
 </div>
